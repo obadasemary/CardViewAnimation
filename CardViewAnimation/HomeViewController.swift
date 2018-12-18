@@ -32,6 +32,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        setupCard()
+    }
+    
+    override func viewDidLayoutSubviews() {
         setupCard()
     }
     
@@ -56,20 +60,26 @@ class HomeViewController: UIViewController {
     
     @objc
     func handleCardTap(recognizer: UITapGestureRecognizer) {
-        
-        
+        switch recognizer.state {
+        case .ended:
+            animateTransitionIfNeeded(state: nextState, duration: 0.9)
+        default:
+            break
+        }
     }
     
     @objc
     func handleCardPan(recognizer: UIPanGestureRecognizer) {
-        
         switch recognizer.state {
         case .began:
             // startTransition
             startInteractiveTransition(state: nextState, duration: 0.9)
         case .changed:
             // updateTransition
-            updateInteractiveTransition(fractionCompleted: 0)
+            let translation = recognizer.translation(in: self.cardViewController.handleArea)
+            var fractionCompleted = translation.y / cardHeight
+            fractionCompleted = cardVisible ? fractionCompleted : -fractionCompleted
+            updateInteractiveTransition(fractionCompleted: fractionCompleted)
         case .ended:
             // continueTransition
             continueInteractiveTransition()
@@ -96,6 +106,30 @@ class HomeViewController: UIViewController {
             
             frameAnimator.startAnimation()
             runningAnimations.append(frameAnimator)
+            
+            let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
+                switch state {
+                case .expanded:
+                    self.cardViewController.view.layer.cornerRadius = 12
+                case .collapsed:
+                    self.cardViewController.view.layer.cornerRadius = 0
+                }
+            }
+            
+            cornerRadiusAnimator.startAnimation()
+            runningAnimations.append(cornerRadiusAnimator)
+            
+            let blurAnimator = UIViewPropertyAnimator.init(duration: duration, dampingRatio: 1) {
+                switch state {
+                case .expanded:
+                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
+                case .collapsed:
+                    self.visualEffectView.effect = nil
+                }
+            }
+            
+            blurAnimator.startAnimation()
+            runningAnimations.append(blurAnimator)
         }
     }
     
