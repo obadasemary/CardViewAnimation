@@ -3,6 +3,8 @@ Interactive Card View Animation with UIPropertyAnimator
 
 📱 https://youtu.be/L-f1KSPKm4I
 
+[![Watch the video](https://camo.githubusercontent.com/2e86e55dbf200faa4d72afbb40993af609857354/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f4c2d66314b53504b6d34492f302e6a7067)](https://youtu.be/L-f1KSPKm4I)
+
 <h1></h1>
 
 <b>Overview</b>
