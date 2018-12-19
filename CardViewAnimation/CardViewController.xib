@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardViewController" customModule="CardViewAnimation" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="qZN-Of-IAe" id="pWI-Cf-OmX"/>
                 <outlet property="handleArea" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DJP-sT-hnF"/>
             </connections>
