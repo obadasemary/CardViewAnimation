@@ -37,13 +37,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
-        cardViewController = CardViewController(nibName: "CardViewController", bundle: nil)
-        self.addChild(cardViewController)
-        self.view.addSubview(cardViewController.view)
         
-        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHandleAreaHeight, width: self.view.bounds.width, height: cardHeight)
-        cardViewController.view.clipsToBounds = true
     }
     
     func setupCard() {
@@ -61,7 +55,6 @@ class HomeViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleCardTap(recognizer:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleCardPan(recognizer:)))
         
-        cardViewController.containerView.addGestureRecognizer(tapGestureRecognizer)
         cardViewController.handleArea.addGestureRecognizer(tapGestureRecognizer)
         cardViewController.handleArea.addGestureRecognizer(panGestureRecognizer)
     }
