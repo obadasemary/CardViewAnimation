@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension UIDevice {
+    static var hasTopNotch: Bool {
+        guard #available(iOS 11.0, *), let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top, topPadding > 24 else {
+            return false
+        }
+        return true
+    }
+}
+
 class HomeViewController: UIViewController {
     
     enum CardState {
@@ -18,8 +27,8 @@ class HomeViewController: UIViewController {
     var cardViewController: CardViewController!
     var visualEffectView: UIVisualEffectView!
     
-    let cardHeight: CGFloat = 600
-    let cardHandleAreaHeight: CGFloat = 65
+    var cardHeight: CGFloat = 0
+    var cardHandleAreaHeight: CGFloat = 90
     
     var cardVisible = false
     var nextState: CardState {
@@ -41,6 +50,12 @@ class HomeViewController: UIViewController {
     }
     
     func setupCard() {
+        
+        cardHeight = self.view.bounds.height * 0.7
+        if UIDevice.hasTopNotch {
+            cardHandleAreaHeight = 70
+        }
+        
         visualEffectView = UIVisualEffectView()
         visualEffectView.frame = self.view.frame
         self.view.addSubview(visualEffectView)
@@ -49,9 +64,15 @@ class HomeViewController: UIViewController {
         self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
         
-        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHandleAreaHeight, width: self.view.bounds.width, height: cardHeight)
+//        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHandleAreaHeight, width: self.view.bounds.width, height: cardHeight)
         cardViewController.view.clipsToBounds = true
-        
+        cardViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cardViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -cardHandleAreaHeight),
+            cardViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            cardViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            cardViewController.view.heightAnchor.constraint(equalToConstant: view.frame.height * 0.7)
+        ])
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleCardTap(recognizer:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleCardPan(recognizer:)))
         
@@ -94,9 +115,9 @@ class HomeViewController: UIViewController {
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
                 case .expanded:
-                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
+                    self.cardViewController.view.frame.origin.y = self.view.frame.height - (self.view.frame.height * 0.7)
                 case .collapsed:
-                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
+                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.view.safeAreaInsets.bottom - self.cardHandleAreaHeight
                 }
             }
             

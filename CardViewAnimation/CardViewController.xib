@@ -61,7 +61,7 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qZN-Of-IAe" secondAttribute="trailing" id="7gy-Li-Cac"/>
                 <constraint firstAttribute="trailing" secondItem="r6F-YW-eeF" secondAttribute="trailing" id="801-46-Vpo"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="r6F-YW-eeF" secondAttribute="top" constant="20" id="P4S-qR-LX1"/>
+                <constraint firstAttribute="top" secondItem="r6F-YW-eeF" secondAttribute="top" id="P4S-qR-LX1"/>
                 <constraint firstItem="qZN-Of-IAe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ufp-Gr-6hp"/>
                 <constraint firstItem="qZN-Of-IAe" firstAttribute="top" secondItem="r6F-YW-eeF" secondAttribute="bottom" id="W0h-Ma-A9o"/>
                 <constraint firstAttribute="bottom" secondItem="qZN-Of-IAe" secondAttribute="bottom" id="Z3C-BQ-hvr"/>
