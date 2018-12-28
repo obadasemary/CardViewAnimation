@@ -9,14 +9,8 @@
 import UIKit
 
 class Flow {
-    
     static func homeController() -> UIViewController {
-        
         let homeVC = HomeViewController()
-        
-//        let homeVCNavigationController = UINavigationController(rootViewController: homeVC)
-//        homeVCNavigationController.navigationBar.isTranslucent = false
-        
         return homeVC
     }
 }
