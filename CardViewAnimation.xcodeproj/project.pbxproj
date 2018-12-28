@@ -20,6 +20,7 @@
 		AF116B8521C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.12.png in Resources */ = {isa = PBXBuildFile; fileRef = AF116B8121C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.12.png */; };
 		AF116B8621C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.13.png in Resources */ = {isa = PBXBuildFile; fileRef = AF116B8221C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.13.png */; };
 		AF116B8721C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.10.png in Resources */ = {isa = PBXBuildFile; fileRef = AF116B8321C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.10.png */; };
+		AF1EC1FE21D6C9C00000E18E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1EC1FD21D6C9C00000E18E /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		AF116B8121C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.12.png"; sourceTree = "<group>"; };
 		AF116B8221C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.13.png"; sourceTree = "<group>"; };
 		AF116B8321C908B400D15E7E /* Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone XS Max - 2018-12-18 at 13.46.10.png"; sourceTree = "<group>"; };
+		AF1EC1FD21D6C9C00000E18E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				AF116B7821C7D76D00D15E7E /* HomeViewController.xib */,
 				AF116B7421C7D6B800D15E7E /* CardViewController.swift */,
 				AF116B7321C7D6B800D15E7E /* CardViewController.xib */,
+				AF1EC1FD21D6C9C00000E18E /* Extensions.swift */,
 				AF116B6821C7D4C700D15E7E /* Assets.xcassets */,
 				AF116B7D21C7DE6F00D15E7E /* Main.storyboard */,
 				AF116B6A21C7D4C700D15E7E /* LaunchScreen.storyboard */,
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF1EC1FE21D6C9C00000E18E /* Extensions.swift in Sources */,
 				AF116B6221C7D4C400D15E7E /* AppDelegate.swift in Sources */,
 				AF116B7C21C7D99500D15E7E /* Flow.swift in Sources */,
 				AF116B7621C7D6B800D15E7E /* CardViewController.swift in Sources */,

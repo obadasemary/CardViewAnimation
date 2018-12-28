@@ -8,15 +8,6 @@
 
 import UIKit
 
-extension UIDevice {
-    static var hasTopNotch: Bool {
-        guard #available(iOS 11.0, *), let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top, topPadding > 24 else {
-            return false
-        }
-        return true
-    }
-}
-
 class HomeViewController: UIViewController {
     
     enum CardState {
@@ -44,11 +35,6 @@ class HomeViewController: UIViewController {
         setupCard()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-    
     func setupCard() {
         
         cardHeight = self.view.bounds.height * 0.7
@@ -61,18 +47,20 @@ class HomeViewController: UIViewController {
         self.view.addSubview(visualEffectView)
         
         cardViewController = CardViewController(nibName: "CardViewController", bundle: nil)
+        
         self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
         
-//        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHandleAreaHeight, width: self.view.bounds.width, height: cardHeight)
         cardViewController.view.clipsToBounds = true
         cardViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             cardViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -cardHandleAreaHeight),
             cardViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             cardViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             cardViewController.view.heightAnchor.constraint(equalToConstant: view.frame.height * 0.7)
         ])
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleCardTap(recognizer:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleCardPan(recognizer:)))
         
